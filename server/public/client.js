@@ -36,7 +36,25 @@ function clickListeners() {
     })
     $(document).on('click', '.deleteButton', deleteTask);
 
-
+    $(document).on('click', '.completeButton', function() {
+    console.log('in completeTask');
+        let taskId = $(this).parents('tr').data('id');
+        let complete = $(this).parents('tr').data('complete')
+        $.ajax({
+            method: 'PUT',
+            url: `tasks/${taskId}`,
+            data: {
+                complete: true
+            }
+        }).then((response) => {
+            console.log('put success', response);
+            getTasks() 
+        }).catch((err) => {
+            console.log('put failed', err);
+            
+        })
+    
+    } )
 }
 
 
@@ -61,7 +79,7 @@ console.log('task is', task);
     for (let i = 0; i < task.length; i += 1){
      let tasks = task[i]
         $('#taskList').append(`
-        <tr data-id = "${tasks.id}">
+        <tr data-id = "${tasks.id}" data-complete = "${tasks.complete}">
         <td class= "tablerow">${tasks.name}</td>
         <td class= "tablerow">${tasks.complete}</td>
         <td class= "tablerow"><button class="deleteButton">delete</button></td>
@@ -99,6 +117,6 @@ function deleteTask(){
 
 }
 
-function completeTask() {
+/* function completeTask() {
 
-}
+} */

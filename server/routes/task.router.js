@@ -52,4 +52,28 @@ router.post('/', (req, res) => {
     
 })
 
+router.put('/:taskId', (req, res) => {
+console.log('taskId is', req.params.taskId);
+console.log('req.body is ', req.body.complete);
+
+let queryText = `
+UPDATE tasks
+SET complete = $1
+WHERE id = $2;
+`;
+
+let queryParams = [
+    req.body.complete, 
+    req.params.taskId
+]
+pool.query(queryText, queryParams)
+.then((dbRes) => {
+    console.log('put success')
+    res.sendStatus(204)
+}).catch((err) => {
+    console.log('put failed', err);
+    res.sendStatus(500)
+})
+
+})
 module.exports = router;
