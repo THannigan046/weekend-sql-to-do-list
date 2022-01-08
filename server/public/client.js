@@ -34,6 +34,7 @@ function clickListeners() {
 
 
     })
+    $(document).on('click', '.deleteButton', deleteTask);
 
 
 }
@@ -60,10 +61,10 @@ console.log('task is', task);
     for (let i = 0; i < task.length; i += 1){
      let tasks = task[i]
         $('#taskList').append(`
-        <tr>
+        <tr data-id = "${tasks.id}">
         <td class= "tablerow">${tasks.name}</td>
         <td class= "tablerow">${tasks.complete}</td>
-        <td class= "tablerow"><button id="deleteButton">delete</button></td>
+        <td class= "tablerow"><button class="deleteButton">delete</button></td>
         <td class= "tablerow"><button class="completeButton">complete</button></td>
         </tr>
         `)
@@ -71,6 +72,30 @@ console.log('task is', task);
 }
 
 function deleteTask(){
+    let taskId = $(this).parents('tr').data('id');
+    Swal.fire({
+        title: 'Are you sure you want to delete this task?',
+        showDenyButton: true,
+        confirmButtonText: 'Delete',
+        denyButtonText: `Don't save`,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire('Saved!', '', 'success');
+            $.ajax({
+                method: 'DELETE', 
+                url: `/tasks/${taskId}`
+            }).then((response) => {
+                console.log('delete success');
+                getTasks();
+            }).catch((err) => {
+                console.log('delete failed', err);
+                
+            })
+        } else if (result.isDenied) {
+            Swal.fire('Changes are not saved', '', 'info')
+        }
+    })
+
 
 }
 

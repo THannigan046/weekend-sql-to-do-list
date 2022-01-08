@@ -13,6 +13,26 @@ router.get('/', (req, res) => {
         })
 });
 
+
+router.delete('/:id', (req, res) => {
+    console.log('id is', req.params.id);
+    
+    let queryText = `
+    DELETE FROM tasks
+    WHERE id=$1;
+    `
+    let queryParams = [
+        req.params.id
+    ]
+
+    pool.query(queryText, queryParams)
+    .then((dbRes) => {
+        res.sendStatus(204)
+    }).catch((err) => {
+        console.log('delete failed', err);
+        
+    })
+})
 router.post('/', (req, res) => {
     console.log('new task is', req.body);
     let queryText = `INSERT INTO tasks (name, complete)
