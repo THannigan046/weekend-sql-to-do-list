@@ -78,14 +78,25 @@ $('#taskList').empty();
 console.log('task is', task);
     for (let i = 0; i < task.length; i += 1){
      let tasks = task[i]
+     if (tasks.complete === false){
         $('#taskList').append(`
-        <tr data-id = "${tasks.id}" data-complete = "${tasks.complete}">
+        <tr class= complete data-id = "${tasks.id}" data-complete = "${tasks.complete}">
+        <td class= "tablerow">${tasks.name}</td>
+        <td class= "tablerow">${tasks.complete}</td>
+        <td class= "tablerow"><button class="completeButton">complete</button></td>
+        <td class= "tablerow"><button class="deleteButton">delete</button></td>
+        </tr>
+        `)
+     }
+     else {
+         $('#taskList').append(`
+        <tr class= incomplete data-id = "${tasks.id}" data-complete = "${tasks.complete}">
         <td class= "tablerow">${tasks.name}</td>
         <td class= "tablerow">${tasks.complete}</td>
         <td class= "tablerow"><button class="deleteButton">delete</button></td>
-        <td class= "tablerow"><button class="completeButton">complete</button></td>
         </tr>
         `)
+     }
     }
 }
 

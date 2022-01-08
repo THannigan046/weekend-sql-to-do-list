@@ -69,6 +69,7 @@ let queryParams = [
 pool.query(queryText, queryParams)
 .then((dbRes) => {
     console.log('put success')
+    
     res.sendStatus(204)
 }).catch((err) => {
     console.log('put failed', err);

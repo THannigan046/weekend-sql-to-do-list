@@ -2,3 +2,10 @@ body {
     background-color: bisque;
 }
 
+.complete {
+    background-color: gray;
+}
+
+.incomplete {
+    background-color: green;
+}
