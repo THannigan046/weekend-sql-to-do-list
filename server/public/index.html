@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <script src="jquery-3.6.0.min.js"></script>
     <script src="client.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -14,10 +16,10 @@
     <h1>To-Do List</h1>
     <section>
         <div>
-            <h3>To-do List</h3>
+            <h3>Add a task, then check it off</h3>
             <input class="form-control" type="text" id="nameIn" value="" placeholder="Name">
             <button class="form-control" type="button" id="addButton">Add Task</button>
-            <table>
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>Task</th>
