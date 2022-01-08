@@ -2,11 +2,42 @@ console.log('js');
 
 $(document).ready(function () {
     console.log('JQ');
-    //clickListeners()
+    clickListeners()
     getTasks();
     $(document).on('click', '.deleteButton', deleteTask);
 
 });
+
+function clickListeners() {
+    $('#addButton').on('click', function(){
+        let name = $('#nameIn').val()
+        if (name === ''){
+            alert('make a task, ya dingus')
+            return
+        }
+        let taskToSend = {
+            name: name,
+            complete: false
+        }
+        console.log('taskToSend is', taskToSend)
+        $.ajax({
+            method: 'POST',
+            url: '/tasks', 
+            data: taskToSend
+        }).then((response) => {
+            $('#nameIn').val('')
+            getTasks()
+        }).catch((error) => {
+            console.log('post failed', error);
+            
+        })
+
+
+    })
+
+
+}
+
 
 function getTasks() {
 console.log('in getTasks');
@@ -40,5 +71,9 @@ console.log('task is', task);
 }
 
 function deleteTask(){
+
+}
+
+function completeTask() {
 
 }
