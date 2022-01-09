@@ -17,14 +17,15 @@ h3 {
 h1 {
     text-align: center;
     font-family: sans-serif;
-    background: hsl(334, 90%, 27%);
+    background: hsl(175, 90%, 27%);
     color: rgb(255, 255, 255);
     padding: 30px 30px 25px 30px;
     margin-top: 0;
 } 
 .incomplete {
-    background-color: green;
+    background-color: rgb(16, 225, 16);
 }
+
 
 tr {
     margin-top: 30px;

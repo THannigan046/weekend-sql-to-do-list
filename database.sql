@@ -5,4 +5,7 @@ CREATE TABLE tasks (
 );
 
 INSERT INTO tasks (name)
-VALUES ('wash dishes'), ('smoke crack'), ('hail satan');
+VALUES ('get it together man'), ('move to philly'), 
+('buy a loft'), ('start a noise band'), ('get 6 or 7 roommates'),
+('eat hummus with them'), ('book some gigs'), ('burn down an applebees'),
+('listen to animal collective'), ('start some kinda salsa company');
